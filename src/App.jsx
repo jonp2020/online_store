@@ -1,12 +1,12 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Womens from "./components/Womens";
 import Mens from "./components/Mens";
 import Kids from "./components/Kids";
 import Home from "./components/Home";
+import Cart from "./components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <Route path="/womens" element={<Womens />}></Route>
         <Route path="/mens" element={<Mens />}></Route>
         <Route path="/kids" element={<Kids />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
     </BrowserRouter>
   );
