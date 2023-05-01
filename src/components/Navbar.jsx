@@ -6,13 +6,15 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 function Navbar() {
   return (
     <>
-      <section>
+      <nav>
         <ul className="flex justify-around mt-4">
           <li>
             <NavLink
               to="/"
-              className={({ isActive, isPending }) =>
-                isActive ? "active" : ""
+              className={({ isActive }) =>
+                ["nav-link", isActive ? "active" : null]
+                  .filter(Boolean)
+                  .join(" ")
               }
             >
               Home
@@ -21,8 +23,10 @@ function Navbar() {
           <li>
             <NavLink
               to="/womens"
-              className={({ isActive, isPending }) =>
-                isActive ? "active" : ""
+              className={({ isActive }) =>
+                ["nav-link", isActive ? "active" : null]
+                  .filter(Boolean)
+                  .join(" ")
               }
             >
               Womens
@@ -31,8 +35,10 @@ function Navbar() {
           <li>
             <NavLink
               to="/mens"
-              className={({ isActive, isPending }) =>
-                isActive ? "active" : ""
+              className={({ isActive }) =>
+                ["nav-link", isActive ? "active" : null]
+                  .filter(Boolean)
+                  .join(" ")
               }
             >
               Mens
@@ -41,8 +47,10 @@ function Navbar() {
           <li>
             <NavLink
               to="/kids"
-              className={({ isActive, isPending }) =>
-                isActive ? "active" : ""
+              className={({ isActive }) =>
+                ["nav-link", isActive ? "active" : null]
+                  .filter(Boolean)
+                  .join(" ")
               }
             >
               Kids
@@ -51,15 +59,17 @@ function Navbar() {
           <li>
             <NavLink
               to="/cart"
-              className={({ isActive, isPending }) =>
-                isActive ? "active" : ""
+              className={({ isActive }) =>
+                ["nav-link", isActive ? "active" : null]
+                  .filter(Boolean)
+                  .join(" ")
               }
             >
               <FontAwesomeIcon icon={faCartShopping} />
             </NavLink>
           </li>
         </ul>
-      </section>
+      </nav>
     </>
   );
 }

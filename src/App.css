@@ -2,10 +2,13 @@
   max-width: 1280px;
 }
 
-.pending {
-  color: green;
+.nav-link:hover {
+  color: orange;
 }
 
 .active {
+  color: red;
+}
+.active:hover {
   color: red;
 }
