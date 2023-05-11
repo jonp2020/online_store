@@ -22,7 +22,7 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/womens"
+              to="womens"
               className={({ isActive }) =>
                 ["nav-link", isActive ? "active" : null]
                   .filter(Boolean)
@@ -34,7 +34,7 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/mens"
+              to="mens"
               className={({ isActive }) =>
                 ["nav-link", isActive ? "active" : null]
                   .filter(Boolean)
@@ -46,7 +46,7 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/kids"
+              to="kids"
               className={({ isActive }) =>
                 ["nav-link", isActive ? "active" : null]
                   .filter(Boolean)
@@ -58,7 +58,7 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/cart"
+              to="cart"
               className={({ isActive }) =>
                 ["nav-link", isActive ? "active" : null]
                   .filter(Boolean)
