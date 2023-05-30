@@ -22,6 +22,18 @@ function Navbar() {
           </li>
           <li>
             <NavLink
+              to="all"
+              className={({ isActive }) =>
+                ["nav-link", isActive ? "active" : null]
+                  .filter(Boolean)
+                  .join(" ")
+              }
+            >
+              All
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="womens"
               className={({ isActive }) =>
                 ["nav-link", isActive ? "active" : null]

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
+import AllShoes from "./components/AllShoes";
 import Womens from "./components/Womens";
 import Mens from "./components/Mens";
 import Kids from "./components/Kids";
@@ -18,6 +19,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/all" element={<AllShoes />} />
         <Route path="/womens" element={<Womens />} />
         <Route path="/womens/:id" element={<IndividualShoe />} />
         <Route path="/mens" element={<Mens />} />

@@ -1,39 +1,65 @@
-const IndividualShoe = () => {
+const IndividualShoe = ({ shoe }) => {
+  const {
+    brand,
+    name,
+    colours,
+    imageURL,
+    price,
+    sizes_availability,
+    _id,
+    slug,
+  } = shoe;
+
+  const coloursFromSize = Object.entries(sizes_availability);
+
+  const mainImageShoeColour = Object.entries(imageURL)[0];
+
   return (
     <section className="flex flex-col md:flex-row justify-center m-4">
       <div className="flex flex-col items-center">
         <img
-          className=""
-          src="https://image.goat.com/375/attachments/product_template_pictures/images/008/654/831/original/31342_00.png.png"
+          className="object-contain h-48 w-96"
+          src={imageURL[mainImageShoeColour[0]][0]}
         />
       </div>
 
       <div className="flex flex-col items-center md:justify-center md:items-start">
-        <h2 className="text-3xl">Nike Air 2000</h2>
+        <h2 className="text-3xl">{name}</h2>
+        <h4>{brand}</h4>
         <div>
-          <h3 className="text-center md:text-start">Size:</h3>
-          <button className="bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white">
-            5
-          </button>
-          <button className="bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white">
-            6
-          </button>
-          <button className="bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white">
-            7
-          </button>
-        </div>
+          <div className="mt-4 mb-2 text-center md:text-start">
+            <h3 className="text-center md:text-start">Colour:</h3>
 
-        <div>
-          <h3 className="text-center md:text-start">Colour:</h3>
-          <button className="bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white">
-            Red
-          </button>
-          <button className="bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white">
-            Green
-          </button>
-          <button className="bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white">
-            Blue
-          </button>
+            {colours.map((colour) => (
+              <button
+                key={colour}
+                className="mt-2 bg-transparent capitalize text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white"
+              >
+                {colour}
+              </button>
+            ))}
+          </div>
+          <h3 className="text-center md:text-start">Size:</h3>
+
+          {coloursFromSize.map((colour, index) => (
+            <div
+              className="mb-5 text-center md:text-start"
+              key={colour + index}
+            >
+              <p className="capitalize">{colour[0]}:</p>
+
+              {Object.entries(colour[1]).map((size, index) => (
+                <button
+                  key={size + index + "shoeSize"}
+                  className="mt-2 bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white"
+                >
+                  {size[0].slice(-2) == "_5"
+                    ? size[0].slice(0, -2) + ".5"
+                    : size[0]}
+                </button>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -41,3 +67,14 @@ const IndividualShoe = () => {
 };
 
 export default IndividualShoe;
+
+// {
+// 	colours.map((colour) => (
+// 		<>
+// 			<p>{colour}</p>
+// 			<button className="bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white">
+// 				{/* {size} */}1
+// 			</button>
+// 		</>
+// 	))
+// 	}
