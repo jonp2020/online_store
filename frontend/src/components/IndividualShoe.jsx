@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const IndividualShoe = ({ shoe }) => {
   const {
     brand,
@@ -10,16 +12,18 @@ const IndividualShoe = ({ shoe }) => {
     slug,
   } = shoe;
 
-  const coloursFromSize = Object.entries(sizes_availability);
+  const coloursFromImageUrlObj = Object.keys(imageURL);
 
-  const mainImageShoeColour = Object.entries(imageURL)[0];
+  const [selectedColour, setSelectedColour] = useState(
+    coloursFromImageUrlObj[0]
+  );
 
   return (
     <section className="flex flex-col md:flex-row justify-center m-4">
       <div className="flex flex-col items-center">
         <img
           className="object-contain h-48 w-96"
-          src={imageURL[mainImageShoeColour[0]][0]}
+          src={imageURL[selectedColour][0]}
         />
       </div>
 
@@ -33,7 +37,12 @@ const IndividualShoe = ({ shoe }) => {
             {colours.map((colour) => (
               <button
                 key={colour}
-                className="mt-2 bg-transparent capitalize text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white"
+                className="mt-2 bg-transparent capitalize  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-gray-700 hover:text-white"
+                onClick={() => setSelectedColour(colour)}
+                style={{
+                  background: selectedColour === colour ? "gray" : "white",
+                  color: selectedColour === colour ? "white" : "gray",
+                }}
               >
                 {colour}
               </button>
@@ -41,23 +50,25 @@ const IndividualShoe = ({ shoe }) => {
           </div>
           <h3 className="text-center md:text-start">Size:</h3>
 
-          {coloursFromSize.map((colour, index) => (
+          {coloursFromImageUrlObj.map((colour, index) => (
             <div
               className="mb-5 text-center md:text-start"
               key={colour + index}
             >
-              <p className="capitalize">{colour[0]}:</p>
+              <p className="capitalize">{colour}:</p>
 
-              {Object.entries(colour[1]).map((size, index) => (
-                <button
-                  key={size + index + "shoeSize"}
-                  className="mt-2 bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white"
-                >
-                  {size[0].slice(-2) == "_5"
-                    ? size[0].slice(0, -2) + ".5"
-                    : size[0]}
-                </button>
-              ))}
+              {Object.entries(sizes_availability[selectedColour]).map(
+                (size, index) => (
+                  <button
+                    key={size + index + "shoeSize"}
+                    className="mt-2 bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white"
+                  >
+                    {size[0].slice(-2) == "_5"
+                      ? size[0].slice(0, -2) + ".5"
+                      : size[0]}
+                  </button>
+                )
+              )}
             </div>
           ))}
         </div>
@@ -67,14 +78,3 @@ const IndividualShoe = ({ shoe }) => {
 };
 
 export default IndividualShoe;
-
-// {
-// 	colours.map((colour) => (
-// 		<>
-// 			<p>{colour}</p>
-// 			<button className="bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white">
-// 				{/* {size} */}1
-// 			</button>
-// 		</>
-// 	))
-// 	}
