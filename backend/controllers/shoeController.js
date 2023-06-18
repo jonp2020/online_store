@@ -2,7 +2,6 @@ const asyncHandler = require("express-async-handler");
 const Shoe = require("../models/shoeModel");
 
 const getAllShoes = asyncHandler(async (req, res) => {
-  console.log("here in get all shoes");
   try {
     const shoes = await Shoe.find();
     res.status(200).json(shoes);
@@ -12,7 +11,6 @@ const getAllShoes = asyncHandler(async (req, res) => {
 });
 
 const getMensShoes = asyncHandler(async (req, res) => {
-  console.log("here in get mens shoes");
   try {
     const shoes = await Shoe.find({ gender: "MEN" });
     res.status(200).json(shoes);
@@ -22,7 +20,6 @@ const getMensShoes = asyncHandler(async (req, res) => {
 });
 
 const getWomensShoes = asyncHandler(async (req, res) => {
-  console.log("here in get womens shoes");
   try {
     const shoes = await Shoe.find({ gender: "WOMEN" });
     res.status(200).json(shoes);
@@ -32,7 +29,6 @@ const getWomensShoes = asyncHandler(async (req, res) => {
 });
 
 const getKidsShoes = asyncHandler(async (req, res) => {
-  console.log("here in get kids shoes");
   try {
     const shoes = await Shoe.find({ gender: "KIDS" });
     res.status(200).json(shoes);
