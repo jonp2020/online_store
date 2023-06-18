@@ -18,13 +18,19 @@ const IndividualShoe = ({ shoe }) => {
     coloursFromImageUrlObj[0]
   );
 
+  const [mainImage, setMainImage] = useState(imageURL[selectedColour][0]);
+
   return (
     <section className="flex flex-col md:flex-row justify-center m-4">
       <div className="flex flex-col items-center">
-        <img
-          className="object-contain h-48 w-96"
-          src={imageURL[selectedColour][0]}
-        />
+        <img className="object-contain h-48 w-96" src={mainImage} />
+        <div className="flex gap-1 flex-wrap align-center justify-center mt-2">
+          {imageURL[selectedColour]?.map((url) => (
+            <button key={url} onClick={() => setMainImage(url)}>
+              <img className="h-24" src={url} />
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="flex flex-col items-center md:justify-center md:items-start">
@@ -38,7 +44,9 @@ const IndividualShoe = ({ shoe }) => {
               <button
                 key={colour}
                 className="mt-2 bg-transparent capitalize  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-gray-700 hover:text-white"
-                onClick={() => setSelectedColour(colour)}
+                onClick={() => {
+                  setSelectedColour(colour), setMainImage(imageURL[colour][0]);
+                }}
                 style={{
                   background: selectedColour === colour ? "gray" : "white",
                   color: selectedColour === colour ? "white" : "gray",

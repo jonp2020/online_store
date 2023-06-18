@@ -20,7 +20,7 @@ const Mens = () => {
       <h1 className="m-10 bg-black text-white text-center text-4xl p-2">
         Mens Shoes
       </h1>
-      {shoes.length && (
+      {shoes.length > 0 && (
         <div>
           {shoes.map((shoe, index) => (
             <IndividualShoe key={shoe._id} shoe={shoe} />
