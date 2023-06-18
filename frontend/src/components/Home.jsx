@@ -6,7 +6,6 @@ import heroImage from "../assets/images/walking-large.jpg";
 const Home = () => {
   return (
     <>
-      <h2>Home page</h2>
       <img src={heroImage} alt="Girl in a jacket" width="" height="" />
       <div>
         <h1>

@@ -1,27 +1,33 @@
-import Shoe from "./Shoe";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import IndividualShoe from "./IndividualShoe";
 
 const Mens = () => {
+  const [shoes, setShoes] = useState([]);
+
+  const getShoes = async () => {
+    const res = await axios.get("api/shoes/mens");
+
+    setShoes(res.data);
+  };
+
+  useEffect(() => {
+    getShoes();
+  }, []);
+
   return (
-    <section className="m-4">
-      <h2>Mens</h2>
-      <main className="flex flex-wrap">
-        <Shoe shoe={{ id: "1", type: "mens" }} />
-        <Shoe shoe={{ id: "2", type: "mens" }} />
-        <Shoe shoe={{ id: "3", type: "mens" }} />
-        <Shoe shoe={{ id: "4", type: "mens" }} />
-        <Shoe shoe={{ id: "5", type: "mens" }} />
-        <Shoe shoe={{ id: "6", type: "mens" }} />
-        <Shoe shoe={{ id: "7", type: "mens" }} />
-        <Shoe shoe={{ id: "8", type: "mens" }} />
-        <Shoe shoe={{ id: "9", type: "mens" }} />
-        <Shoe shoe={{ id: "10", type: "mens" }} />
-        <Shoe shoe={{ id: "11", type: "mens" }} />
-        <Shoe shoe={{ id: "12", type: "mens" }} />
-        <Shoe shoe={{ id: "13", type: "mens" }} />
-        <Shoe shoe={{ id: "14", type: "mens" }} />
-        <Shoe shoe={{ id: "15", type: "mens" }} />
-      </main>
-    </section>
+    <>
+      <h1 className="m-10 bg-black text-white text-center text-4xl p-2">
+        Mens Shoes
+      </h1>
+      {shoes.length && (
+        <div>
+          {shoes.map((shoe, index) => (
+            <IndividualShoe key={shoe._id} shoe={shoe} />
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 
