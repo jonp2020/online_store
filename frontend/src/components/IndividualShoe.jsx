@@ -20,6 +20,8 @@ const IndividualShoe = ({ shoe }) => {
 
   const [mainImage, setMainImage] = useState(imageURL[selectedColour][0]);
 
+  const [selectedSize, setSelectedSize] = useState();
+
   return (
     <section className="flex flex-col md:flex-row justify-center m-4">
       <div className="flex flex-col items-center">
@@ -58,27 +60,24 @@ const IndividualShoe = ({ shoe }) => {
           </div>
           <h3 className="text-center md:text-start">Size:</h3>
 
-          {coloursFromImageUrlObj.map((colour, index) => (
-            <div
-              className="mb-5 text-center md:text-start"
-              key={colour + index}
-            >
-              <p className="capitalize">{colour}:</p>
-
-              {Object.entries(sizes_availability[selectedColour]).map(
-                (size, index) => (
-                  <button
-                    key={size + index + "shoeSize"}
-                    className="mt-2 bg-transparent text-gray-700  py-2 px-4 mr-2 border border-gray-400 rounded hover:bg-gray-500 hover:border-transparent hover:text-white"
-                  >
-                    {size[0].slice(-2) == "_5"
-                      ? size[0].slice(0, -2) + ".5"
-                      : size[0]}
-                  </button>
-                )
-              )}
-            </div>
-          ))}
+          {Object.entries(sizes_availability[selectedColour]).map(
+            (size, index) => (
+              <button
+                key={size + index + "shoeSize"}
+                className="mt-2 bg-transparent text-gray-700  py-2 px-4 mr-2 border  rounded  hover:bg-gray-500 hover:border-gray-700 hover:text-white"
+                onClick={() => setSelectedSize(size[0])}
+                style={{
+                  backgroundColor:
+                    size[0] === selectedSize ? "gray" : "transparent",
+                  color: size[0] === selectedSize ? "white" : "gray",
+                }}
+              >
+                {size[0].slice(-2) == "_5"
+                  ? size[0].slice(0, -2) + ".5"
+                  : size[0]}
+              </button>
+            )
+          )}
         </div>
       </div>
     </section>
