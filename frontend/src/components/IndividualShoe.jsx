@@ -79,6 +79,19 @@ const IndividualShoe = ({ shoe }) => {
             )
           )}
         </div>
+        <button
+          className={`mt-4 bg-transparent text-gray-700  py-2 px-4 mr-2 border  rounded  hover:bg-orange-500 ${
+            selectedSize && selectedColour ? "hover:border-orange-500" : ""
+          }  hover:text-white disabled:bg-gray-300 disabled:text-white disabled:opacity-50`}
+          disabled={!selectedSize}
+          title={
+            !selectedSize || !selectedColour
+              ? "Select your shoe colour and size"
+              : "Click to add to your cart"
+          }
+        >
+          Add to cart
+        </button>
       </div>
     </section>
   );
