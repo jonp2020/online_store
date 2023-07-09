@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { CartContext } from "../context/CartContext";
 
 function Navbar() {
+  const { cartItems } = useContext(CartContext);
+
   return (
     <>
       <nav>
@@ -72,12 +75,17 @@ function Navbar() {
             <NavLink
               to="cart"
               className={({ isActive }) =>
-                ["nav-link", isActive ? "active" : null]
+                ["nav-link", "relative", isActive ? "active" : null]
                   .filter(Boolean)
                   .join(" ")
               }
             >
               <FontAwesomeIcon icon={faCartShopping} />
+              {cartItems.length !== 0 ? (
+                <span className="absolute -right-5 left-5 top-0 text-center text-black text-sm">
+                  {cartItems.length}
+                </span>
+              ) : null}
             </NavLink>
           </li>
         </ul>
