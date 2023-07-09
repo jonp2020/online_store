@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
 
 const IndividualShoe = ({ shoe }) => {
   const {
@@ -21,6 +22,15 @@ const IndividualShoe = ({ shoe }) => {
   const [mainImage, setMainImage] = useState(imageURL[selectedColour][0]);
 
   const [selectedSize, setSelectedSize] = useState();
+
+  const { setCartItems } = useContext(CartContext);
+
+  const addShoeToCart = () => {
+    setCartItems((cartItems) => [
+      ...cartItems,
+      { shoe, selectedColour, selectedSize },
+    ]);
+  };
 
   return (
     <section className="flex flex-col md:flex-row justify-center m-4">
@@ -89,6 +99,7 @@ const IndividualShoe = ({ shoe }) => {
               ? "Select your shoe colour and size"
               : "Click to add to your cart"
           }
+          onClick={addShoeToCart}
         >
           Add to cart
         </button>
