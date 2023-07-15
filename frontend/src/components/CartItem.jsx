@@ -30,6 +30,7 @@ const CartItem = ({ item }) => {
         <img className="object-contain h-48 w-96" src={mainImage} />
         <p>Colour: {selectedColour}</p>
         <p>Size: {selectedSize}</p>
+        <p>Price: £{price}</p>
         <button
           className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => removeItem()}

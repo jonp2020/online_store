@@ -48,6 +48,7 @@ const IndividualShoe = ({ shoe }) => {
       <div className="flex flex-col items-center md:justify-center md:items-start">
         <h2 className="text-3xl">{name}</h2>
         <h4>{brand}</h4>
+        <h5>£{price}</h5>
         <div>
           <div className="mt-4 mb-2 text-center md:text-start">
             <h3 className="text-center md:text-start">Colour:</h3>
