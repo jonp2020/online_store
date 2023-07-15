@@ -31,7 +31,7 @@ const CartItem = ({ item }) => {
         <p>Colour: {selectedColour}</p>
         <p>Size: {selectedSize}</p>
         <button
-          className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+          className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => removeItem()}
         >
           Remove from cart
